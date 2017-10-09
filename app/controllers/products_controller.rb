@@ -37,7 +37,7 @@ before_action :set_product, only: [:show, :update, :destroy]
     params.permit(:name, :description, :image, :price)
   end
 
-  def set_producg
+  def set_product
     @products = Product.find(params[:id])
   end
 end
