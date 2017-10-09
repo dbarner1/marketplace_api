@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   Rails.application.routes.draw do
     resources :products do
-      resources :name :description :image :price
+      resources :name
     end
 
     resources :users do
