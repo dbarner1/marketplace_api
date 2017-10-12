@@ -1,5 +1,7 @@
 class ProductsController < ApplicationController
-before_action :set_product, only: [:show, :update, :destroy]
+before_action :set_headers, :set_product, only: [:show, :update, :destroy]
+before_action
+
 
   # GET /users
   def index
@@ -35,6 +37,10 @@ before_action :set_product, only: [:show, :update, :destroy]
   def product_params
     params.require(:product).permit(:name, :description, :image, :price)
     params.permit(:name, :description, :image, :price)
+  end
+
+  def set_headers
+    response.headers['Content-Type'] = 'application/vnd.api+json'
   end
 
   def set_product

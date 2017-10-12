@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-before_action :set_user, only: [:show, :update, :destroy]
+before_action :set_headers, :set_user, only: [:show, :update, :destroy]
 
   # GET /users
   def index
@@ -35,6 +35,10 @@ before_action :set_user, only: [:show, :update, :destroy]
   def user_params
     params.require(:user).permit(:first_name, :last_name, :user_id)
     params.permit(:first_name, :last_name, :user_id)
+  end
+
+  def set_headers
+    response.headers['Content-Type'] = 'application/vnd.api+json'
   end
 
   def set_user

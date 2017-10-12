@@ -1,5 +1,5 @@
 class AislesController < ApplicationController
-  before_action :set_aisle, only: [:show, :update, :destroy]
+  before_action :set_headers, :set_aisle, only: [:show, :update, :destroy]
 
   # GET /aisles
   def index
@@ -32,6 +32,9 @@ class AislesController < ApplicationController
 
   private
 
+  def set_user
+    @user = User.find(params[:id])
+  end
 
   def aisle_params
     params.require(:aisle).permit(:name)
